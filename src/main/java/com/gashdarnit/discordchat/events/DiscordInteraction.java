@@ -11,8 +11,16 @@ public class DiscordInteraction implements Listener {
     @EventHandler
     private void advancementMessageListener(PlayerAdvancementDoneEvent event) {
         String playerName = event.getPlayer().getName();
-        String message = event.getEventName();
-        System.out.println(message);
+        String advancement = event.getAdvancement().getDisplay().getTitle();
+        String addMessage = "[Server]: " + playerName + " has made the advancement [" + advancement + "]";
+
+        try {
+            FileWriter fw = new FileWriter(fileDir + "minecraft_chat.txt", true);
+            fw.write(addMessage);
+            fw.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     @EventHandler
