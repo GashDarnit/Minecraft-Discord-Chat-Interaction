@@ -1,12 +1,31 @@
+package com.gashdarnit.discordchat.events;
+
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerAdvancementDoneEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 
 import java.io.*;
 
 public class DiscordInteraction implements Listener {
     private static String fileDir = "Replace this part with the desired directory" + "\\data\\";
+
+    @EventHandler
+    private void playerJoinListener(PlayerJoinEvent event) {
+        String playerName = event.getPlayer().getName();
+        String addMessage = "[Server]: " + playerName + " joined the game";
+        addMessageToFile(addMessage);
+    }
+
+    @EventHandler
+    private void playerLeaveListener(PlayerQuitEvent event) {
+        String playerName = event.getPlayer().getName();
+        String addMessage = "[Server]: " + playerName + " left the game";
+        addMessageToFile(addMessage);
+    }
 
     @EventHandler
     private void playerDeathMessageListener(PlayerDeathEvent event) {
@@ -42,5 +61,4 @@ public class DiscordInteraction implements Listener {
             System.out.println(e);
         }
     }
-
 }
