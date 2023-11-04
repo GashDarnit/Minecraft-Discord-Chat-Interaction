@@ -1,0 +1,4 @@
+name: DiscordChat
+version: '${project.version}'
+main: com.gashdarnit.discordchat.DiscordChat
+api-version: '1.20'
