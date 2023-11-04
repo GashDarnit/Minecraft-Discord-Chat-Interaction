@@ -6,10 +6,10 @@ import asyncio
 import json
 
 TOKEN = "" #Bot token goes here - Better keep this inside of an env file
+chatroom_id =  #channel id of the channel you want to have the interaction
+
 intents = discord.Intents.all()
 client = commands.Bot(command_prefix = "!", intents = intents)
-
-chatroom_id =  #channel id of the channel you want to have the interaction
 
 bot_info_directory = "data/"
 username_map = {}
